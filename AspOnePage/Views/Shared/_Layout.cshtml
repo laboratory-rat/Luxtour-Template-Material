@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="App" >
+<head >
+    <meta charset="utf-8" />
+    <title>Luxtour Franchise</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    @Styles.Render("~/bundles/material-style")
+    
+    @* 
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    *@
+
+</head>
+<body ng-cloak>
+    <div class="layout-column">
+
+        <md-toolbar id="tool-bar" ng-controller="HeaderCtrl" ng-init="Init()">
+            <div class="md-toolbar-tools layout-row">
+                <h3>
+                    <span>Your site</span>
+                </h3>
+                <span flex></span>
+                
+                <!-- Main menu -->
+
+                <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="OpenMenu($mdOpenMenu, $event)">
+                        <md-icon aria-label="menu icon" class="material-icons">menu</md-icon>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-href="http://luxtour.online">
+                                <md-icon aria-label="Luxtour site" class="material-icons">home</md-icon>
+                                To Luxtour.Online
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-disabled="true">
+                                Clear
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-disabled="true">
+                                Clear
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <!-- End of menu -->
+
+            </div>
+        </md-toolbar>
+        
+        <md-content flex>
+            @RenderBody()
+        </md-content>
+    </div>
+
+
+    <div class="container body-content">
+        @RenderSection("SPAViews", required: false)
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <!-- Fab -->
+    <div ng-controller="FabCtrl">
+
+        <md-button ng-show="UpScrollVisible" smooth-scroll target="tool-bar" ng-click="ScrollUp()" class="md-fab app-fab-main md-whiteframe-8dp app-fade" aria-label="Up button">
+            <md-icon class="material-icons app-white-main">keyboard_arrow_up</md-icon>
+        </md-button>
+
+        <md-fab-speed-dial ng-show="!UpScrollVisible" md-open="IsFabOpen" md-direction="up" class="md-fling app-fab-main app-fade app-fab-rotation">
+            <md-fab-trigger class="">
+                <md-button aria-label="menu" class="md-fab md-whiteframe-8dp ">
+                    <md-icon class="material-icons app-anim">add</md-icon>
+                </md-button>
+            </md-fab-trigger>
+
+            <md-fab-actions>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon aria-label="Twitter" class="material-icons">add</md-icon>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon aria-label="Facebook" class="material-icons">add</md-icon>
+                </md-button>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon aria-label="Google Hangout" class="material-icons">add</md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </div>
+
+    <!-- End of tab -->
+
+    @*
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    *@
+    
+    @Scripts.Render("~/bundles/material-scripts")
+    @Scripts.Render("~/bundles/main-app")
+    
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

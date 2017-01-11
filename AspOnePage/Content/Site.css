@@ -1,0 +1,83 @@
+﻿body {
+    padding: 0px;
+    margin: 0px;
+}
+
+.app-toolbar-small
+{
+    height: 44px;
+    max-height: 44px;
+    min-height: 44px;
+}
+
+
+md-tabs .md-tab.md-active {
+    color: rgba(255,255,255,0.87) !important;
+    background-color: rgba(255,255,255,0.1) !important;
+}
+
+md-tabs .md-tab {
+    color: rgba(255,255,255,0.57) !important;
+
+}
+
+.app-fab-main {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+}
+
+.app-fullheight--110
+{
+    height: Calc(100vh - 110px);
+}
+
+.app-fullheight{
+    height: 100vh;
+}
+
+.app-back-image{
+    background-position: center;
+    background-size: cover;
+}
+
+.app-triple-slider{
+    overflow: visible;
+
+}
+
+.app-triple-slider .slide{
+    padding: 0px 8px 0px 8px;
+}
+
+/*#region Colors */
+
+.app-white-main{
+    color: rgba(255,255,255,0.87);
+}
+
+/*#endregion */
+
+/*#region Animations */
+
+.app-fade {
+    opacity: 1;
+    transition: all linear 400ms !important;
+}
+
+.app-fade.ng-hide
+{
+    opacity: 0;
+}
+
+.app-fab-rotation md-icon.app-anim {
+    transition: all ease-out 400ms;
+    transform: rotate(0deg);
+}
+
+.app-fab-rotation.md-is-open  md-icon.app-anim
+{
+    transform: rotate(225deg);
+}
+
+/*#endregion */

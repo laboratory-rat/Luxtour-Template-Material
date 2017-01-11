@@ -1,0 +1,120 @@
+﻿<md-tabs md-dynamic-height md-border-bottom  md-colors="{background: 'primary'}"  style="border-radius: 0px;">
+
+    <!-- Tabs -->
+
+    <!-- Home tab -->
+
+    <md-tab label="Home" >
+        <md-content class="" ng-controller="HomeCtrl" ng-cloak >
+            <section class="app-back-image md-padding app-fullheight--110" layout="row" style="background-image: url(@Url.Content("~/Content/Images/Landing/font_1.png"));" >
+                <div flex="50" flex-md="40" flex-sm="95" flex-offset="5" layout="column">
+                    <div flex="60">
+                        <h2 flex="" class="md-display-1 app-white-main">Title</h2>
+                        <h3 class="md-title app-white-main">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur venenatis urna id posuere dignissim. Cras congue arcu purus, ut lacinia nisl posuere in. Maecenas elit nulla, dictum at ullamcorper in, vestibulum feugiat urna. Aliquam erat volutpat. Aenean sem urna, bibendum ut tortor non, sagittis posuere augue. Maecenas ultrices convallis interdum. Phasellus consectetur ullamcorper posuere. Maecenas eu posuere justo, non lobortis elit. Vestibulum ullamcorper ipsum vel porttitor semper. Fusce eu tristique ante, in convallis odio. Proin sed lectus eleifend, scelerisque dolor sodales, bibendum tortor.
+                        </h3>
+                    </div>
+                    <div flex="15"></div>
+                    <div flex="25" layout="row" layout-align="space-around center"  layout-wrap>
+                        <div flex="5"></div>
+                        <div flex="60" layout="row" layout-align="space-around center" layout-wrap>
+                            <md-button aria-label="landing button 1" class="md-raised md-primary">
+                                Primary button
+                            </md-button>
+
+                            <md-button aria-label="landing button 1">
+                                Second button
+                            </md-button>
+                        </div>
+                        <div flex="35"></div>
+
+                    </div>
+                </div>
+            </section layout="row">
+
+            <section layout="row" class="app-fullheight">
+                <div flex="5"></div>
+                <div flex="90" layout="column">
+                    <div flex="10"></div>
+                    <div flex="80" layout="row" layout-sm="column" layout-wrap>
+                        <div flex="50" flex-md="25" flex-sm="20">
+                            <img src="@Url.Content("~/Content/Images/Landing/font_1.png")" style="width: 80%; margin: auto; display: block;" />
+                            <h3 class="md-display-1">Some text</h3>
+                        </div>
+                        <div flex="50" flex-md="25" flex-sm="20" flex-sm-offset="5">
+                            <img src="@Url.Content("~/Content/Images/Landing/font_1.png")" style="width: 80%; margin: auto; display: block;" />
+                            <h3 class="md-display-1">Some text</h3>
+                        </div>
+                        <div flex="50" flex-md="25" flex-sm="25">
+                            <img src="@Url.Content("~/Content/Images/Landing/font_1.png")" style="width: 80%; margin: auto; display: block;" />
+                            <h3 class="md-display-1">Some text</h3>
+                        </div>
+                        <div flex="50" flex-md="25" flex-sm="25">
+                            <img src="@Url.Content("~/Content/Images/Landing/font_1.png")" style="width: 80%; margin: auto; display: block;" />
+                            <h3 class="md-display-1">Some text</h3>
+                        </div>
+                    </div>
+                    <div flex="10"></div>
+
+                </div>
+                <div flex="5"></div>
+            </section>
+
+            <section layout="row" layout-align="center stretch" class="app-fullheight">
+                <div flex-sm="90" flex-xs="100" flex-md="80" flex="70"  layout="column" layout-align="center stretch">
+                    <div flex="50" style="overflow: hidden;">
+                        <jk-carousel data="ToursData" item-template-url="'/Content/Templates/LandingHomeToursSlider.html'" class="app-triple-slider"
+                                     max-width="400" max-height="400" auto-slide="true" auto-slide-time="9000" style="margin: auto;">
+                        </jk-carousel>
+                    </div>
+
+                </div>
+            </section>
+
+            <section  layout="column" class="app-fullheight">
+                <div flex="25"></div>
+                <jk-carousel flex="50" flex-offset="25" data="SliderData" item-template-url="'/Content/Templates/LandingSlider.html'" max-width="700" max-height="400">
+                </jk-carousel>
+                <div flex="25"></div>
+            </section>
+        </md-content>
+    </md-tab>
+
+    <!-- Tours tab -->
+
+    <md-tab label="Tours">
+        <md-content class="md-padding">
+            <h1 class="md-display-2">Tours</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+    </md-tab>
+
+    <!-- Hotels tab-->
+
+    <md-tab label="Hotels">
+        <md-content class="md-padding">
+            <h1 class="md-display-2">Hotels</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+    </md-tab>
+
+    <!-- About tab -->
+
+    <md-tab label="About">
+        <md-content class="md-padding">
+            <h1 class="md-display-2">About</h1>
+            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        </md-content>
+    </md-tab>
+</md-tabs>
+
+
+
+    @section Scripts
+{
+        <script src="~/Scripts/AppMain/ContentCtrl_Index.js"></script>
+    }
