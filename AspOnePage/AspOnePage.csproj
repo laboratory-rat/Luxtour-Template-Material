@@ -248,6 +248,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\angular-carousel.min.css" />
     <Content Include="Content\Images\Landing\font_1.png" />
     <Content Include="Content\Images\Landing\font_2.png" />
     <Content Include="Content\jk-carousel.min.css" />
@@ -262,10 +263,17 @@
     <Content Include="Content\angular-material.min.css" />
     <Content Include="Content\material-fonts.css" />
     <Content Include="Content\material-icons.css" />
+    <Content Include="Scripts\angular-carousel.min.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\Luxtour\lt-angular.js" />
+    <Content Include="Scripts\Luxtour\ltBestTours.js" />
+    <Content Include="Scripts\SmoothScroll.min.js" />
     <Content Include="Content\Templates\LandingHomeToursSlider.html" />
     <Content Include="Content\Templates\LandingSlider.html" />
     <Content Include="Scripts\angular-messages.js" />
     <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\AppMain\ContentCtrl_Index.js" />
     <Content Include="Scripts\jk-carousel.min.js" />
     <Content Include="Scripts\ltConfig.js" />
@@ -334,6 +342,7 @@
     <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
     <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -352,7 +361,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\sammy-0.7.5.js" />
     <Content Include="Scripts\sammy-0.7.5.min.js" />
-    <Content Include="Scripts\SmoothScroll.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\app\_run.js" />
     <Content Include="Scripts\app\app.datamodel.js" />

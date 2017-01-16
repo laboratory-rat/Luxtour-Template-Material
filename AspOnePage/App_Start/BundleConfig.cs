@@ -33,25 +33,31 @@ namespace AspOnePage
 
             bundles.Add(new ScriptBundle("~/bundles/material-scripts").Include(
                 "~/Scripts/angular/angular.js",
+                "~/Scripts/angular-sanitize.min.js",
+                "~/Scripts/Luxtour/lt-angular.js",
                 "~/Scripts/angular-route.js",
+                "~/Scripts/angular-touch.min.js",
                 "~/Scripts/angular-animate/angular-animate.js",
                 "~/Scripts/angular-messages.js",
                 "~/Scripts/angular-aria/angular-aria.js",
                 "~/Scripts/angular-material/angular-material.js",
-                "~/Scripts/jk-carousel.min.js",
+                "~/Scripts/angular-carousel.min.js",
                 "~/Scripts/SmoothScroll.min.js",
                 "~/Scripts/ltConfig.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/material-scripts.min").Include(
                 "~/Scripts/angular/angular.min.js",
+                "~/Scripts/Luxtour/lt-angular.js",
+                "~/Scripts/angular-sanitize.min.js",
                 "~/Scripts/angular-route.min.js",
+                "~/Scripts/angular-touch.min.js",
                 "~/Scripts/angular-animate/angular-animate.min.js",
                 "~/Scripts/angular-messages.min.js",
                 "~/Scripts/angular-aria/angular-aria.min.js",
-                "~/Scripts/jk-carousel.min.js",
-                "~/Scripts/SmoothScroll.min.js",
+                "~/Scripts/angular-carousel.min.js",
                 "~/Scripts/angular-material/angular-material.min.js",
+                "~/Scripts/SmoothScroll.min.js",
                 "~/Scripts/ltConfig.js"
                 ));
 
@@ -63,7 +69,7 @@ namespace AspOnePage
                 "~/Content/material-fonts.css",
                 "~/Content/material-icons.css",
                 "~/Content/angular-material.css",
-                "~/Content/jk-carousel.min.css",
+                "~/Content/angular-carousel.min.css",
                 "~/Content/Site.css"
                 ));
 

@@ -7,8 +7,9 @@
             'ngMaterial',
             'ltConfig',
             'ngRoute',
-            'jkAngularCarousel',
-            'angularSmoothscroll'
+            'angular-carousel',
+            'angularSmoothscroll',
+            'ngSanitize'
         ])
 
         .controller("HeaderCtrl", function ($scope, $mdDialog) {

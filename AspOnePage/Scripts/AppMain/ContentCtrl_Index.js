@@ -5,42 +5,68 @@
 
     angular
         .module('App')
-        .controller('HomeCtrl', ContentCtrl_Index);
+        .controller('HomeCtrl', function ($scope, $ltBestTour) {
+            $ltBestTour().success(function (r) {
+                console.log(r);
+            });
+        })
+        .controller('ToursCtrl', function ($scope, $ltBestTour, $tourOrder) {
+            $scope.Tours = [];
+            $scope.AllTours = false;
+            $scope.Inited = false;
 
-    function ContentCtrl_Index($scope, $http) {
-        $scope.title = 'ContentCtrl_Index';
+            $scope.ActiveTour = null;
 
-        $scope.ToursData = null;
+            $scope.SetActive = function (tour = null) {
+                if (tour !== undefined) {
+                    $scope.ActiveTour = tour;
+                }
+            };
 
-        $scope.SliderData = [
-            { src: 'http://d1g4jc1lxwrbex.cloudfront.net/images/clouds1024.png' },
-            { src: 'http://d1g4jc1lxwrbex.cloudfront.net/images/clouds1024.png' },
-            { src: 'http://d1g4jc1lxwrbex.cloudfront.net/images/clouds1024.png' },
-            { src: 'http://d1g4jc1lxwrbex.cloudfront.net/images/clouds1024.png' },
-        ];
+            $scope.GetTourOrderLink = function (id) {
+                return $tourOrder(id);
+            };
 
-        $scope.LoadTours = function (page = 1, count = 10) {
-            var src = tours_api + '?page=' + page + '&count=' + count + '&language=uk';
+            $scope.LoadTours = function (page, count, language) {
+                if ($scope.AllTours)
+                    return;
 
-            $http.get(src)
-                .success(function (r) {
+                $ltBestTour(page, count, language)
+                    .success(function (r) {
+                        if (r === undefined && r === null) {
+                            $scope.AllTours = true;
+                            return;
+                        }
 
-                    console.log(r)
-                    console.log($scope.SliderData);
+                        console.log("Loading finished");
+                        console.log(r);
 
-                    if (r !== undefined) {
-                        $scope.ToursData = r;
-                    }
-                })
-                .error(function (r) {
-                    console.log('Error');
-                    console.log(r);
-                });
-        };
+                        for (var i = 0; i < r.length; i++){
+                            $scope.Tours.push(r[i]);
+                        }
 
-        // Init
+                        if (r.length === count)
+                        {
+                            page++;
+                            $scope.LoadTours(page, count, language);
+                        }
+                        else
+                        {
+                            $scope.AllTours = true;
+                        }
+                    })
+                    .error(function (r) { $scope.AllTours = true; });
+            };
 
-        $scope.LoadTours();
+            $scope.Init = function()
+            {
+                if ($scope.isInited)
+                    return;
 
-    }
+                $scope.isInited = true;
+                $scope.LoadTours(1, 2, 'ru');
+            }
+
+            //Init
+        });
 })();

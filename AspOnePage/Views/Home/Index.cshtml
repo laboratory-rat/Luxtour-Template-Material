@@ -61,33 +61,63 @@
             </section>
 
             <section layout="row" layout-align="center stretch" class="app-fullheight">
-                <div flex-sm="90" flex-xs="100" flex-md="80" flex="70"  layout="column" layout-align="center stretch">
-                    <div flex="50" style="overflow: hidden;">
-                        <jk-carousel data="ToursData" item-template-url="'/Content/Templates/LandingHomeToursSlider.html'" class="app-triple-slider"
-                                     max-width="400" max-height="400" auto-slide="true" auto-slide-time="9000" style="margin: auto;">
-                        </jk-carousel>
+                <div flex-sm="90" flex-xs="100" flex-md="80" flex="80"  layout="column" layout-align="center stretch">
+                    <div flex="50">
                     </div>
 
                 </div>
             </section>
 
-            <section  layout="column" class="app-fullheight">
-                <div flex="25"></div>
-                <jk-carousel flex="50" flex-offset="25" data="SliderData" item-template-url="'/Content/Templates/LandingSlider.html'" max-width="700" max-height="400">
-                </jk-carousel>
-                <div flex="25"></div>
-            </section>
+
         </md-content>
     </md-tab>
 
     <!-- Tours tab -->
 
     <md-tab label="Tours">
-        <md-content class="md-padding">
-            <h1 class="md-display-2">Tours</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        <md-content ng-controller="ToursCtrl" ng-init="Init()"  class="md-padding" layout="row" layout-align="center start" >
+            <div flex="75" flex-md="85" flex-sm="100" flex-xs="100" class="" layout="column">
+                <h1 class="md-display-2" flex="100">Tours</h1>
+
+                <!-- Content -->
+                <div flex="100" layout="row">
+                    <div flex="65" flex-sm="100" flex-xs="100" ng-class="{'flex-100': ActiveTour !== null}" class="active-card">
+                        <md-card ng-repeat="t in Tours" class="active-card">
+                            <md-card-title style="padding: 8px 16px 0px 0px; min-height: 250px;">
+                                <md-card-title-media flex="40" >
+                                    <div ng-style="{'background-image': 'url('+ t.image.url +')'}" class="md-media-lg card-media app-back-image" style="width: 100%; height: 100%;">
+
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text style="text-align: right;">
+                                    <span class="md-headline">{{t.description.title}}</span>
+                                    <span class="md-subhead">{{t.price | currency : '$' : 2}}</span>
+                                    <span class="md-subhead">{{t.days}} дней</span>
+                                    <span class="md-subhead" ng-if="t.child + t.adult !== 0">{{t.child + t.adult}} человек</span>
+                                </md-card-title-text>
+
+                            </md-card-title>
+                            <md-card-content flex style="padding-top: 16px;" ng-show="ActiveTour === t" ng-bind-html="t.description.description">
+                            </md-card-content>
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button href="{{GetTourOrderLink(t.id)}}">К оформлению</md-button>
+                                <md-button ng-click="SetActive(t);" ng-show="ActiveTour !== t">Детально</md-button>
+                                <md-button ng-click="SetActive(null);" ng-show="ActiveTour === t">Hide</md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </div>
+
+
+                    <!-- Sidebar -->
+
+                    <md-card flex="35" show-gt-sm hide ng-class="{'none': ActiveTour !== null}">
+
+                    </md-card>
+                </div>
+
+                
+
+            </div>
         </md-content>
     </md-tab>
 
@@ -118,3 +148,31 @@
 {
         <script src="~/Scripts/AppMain/ContentCtrl_Index.js"></script>
     }
+
+<style>
+    .none{
+        display: none;
+    }
+
+    .active-card
+    {
+        transition: all ease-out 400ms;
+    }
+
+    md-card-content.ng-hide-add {
+        
+    }
+    md-card-content.ng-hide-remove {
+        transition: all 0.5s ease-out;
+    }
+
+    md-card-content{
+        opacity: 1;
+    }
+    
+    md-card-content.ng-hide {
+        opacity: 0;
+    }
+
+
+</style>

@@ -1,6 +1,7 @@
 ﻿body {
     padding: 0px;
     margin: 0px;
+    background-color: #f5f5f5;
 }
 
 .app-toolbar-small
@@ -78,6 +79,54 @@ md-tabs .md-tab {
 .app-fab-rotation.md-is-open  md-icon.app-anim
 {
     transform: rotate(225deg);
+}
+
+/*#endregion */
+
+
+/*#region lt-tour-slider */
+
+lt-tour-slider
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    position: relative;
+}
+
+    lt-tour-slider .btn-left {
+        position: absolute;
+        bottom: 0;
+        left: 0px;
+    }
+
+    lt-tour-slider .btn-right {
+        position: absolute;
+        bottom: 0;
+        right: 0px;
+    }
+
+lt-tour-slider > .lt-container
+{
+    transition: all ease-out 200ms;
+}
+
+lt-tour-slider > .lt-container > .lt-element
+{
+    display: inline-block;
+
+    text-decoration: none;
+    list-style: none;
+}
+
+.lt-element md-card-content {
+    /*
+    overflow-x: scroll;
+    height: 200px;
+        */
 }
 
 /*#endregion */
