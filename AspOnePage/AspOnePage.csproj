@@ -263,13 +263,13 @@
     <Content Include="Content\angular-material.min.css" />
     <Content Include="Content\material-fonts.css" />
     <Content Include="Content\material-icons.css" />
+    <Content Include="Content\Templates\Template_HotelImageSlider.html" />
+    <Content Include="Content\Templates\Template_HotelWindow.html" />
     <Content Include="Scripts\angular-carousel.min.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\Luxtour\lt-angular.js" />
     <Content Include="Scripts\Luxtour\ltBestTours.js" />
     <Content Include="Scripts\SmoothScroll.min.js" />
-    <Content Include="Content\Templates\LandingHomeToursSlider.html" />
-    <Content Include="Content\Templates\LandingSlider.html" />
     <Content Include="Scripts\angular-messages.js" />
     <Content Include="Scripts\angular-messages.min.js" />
     <Content Include="Scripts\angular-touch.js" />
@@ -413,6 +413,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

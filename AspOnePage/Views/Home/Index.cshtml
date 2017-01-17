@@ -81,7 +81,7 @@
 
                 <!-- Content -->
                 <div flex="100" layout="row">
-                    <div flex="65" flex-sm="100" flex-xs="100" ng-class="{'flex-100': ActiveTour !== null}" class="active-card">
+                    <div flex="75" flex-sm="100" flex-xs="100" ng-class="{'flex-100': ActiveTour !== null}" class="active-card">
                         <md-card ng-repeat="t in Tours" class="active-card">
                             <md-card-title style="padding: 8px 16px 0px 0px; min-height: 250px;">
                                 <md-card-title-media flex="40" >
@@ -89,17 +89,26 @@
 
                                     </div>
                                 </md-card-title-media>
-                                <md-card-title-text style="text-align: right;">
+                                <md-card-title-text style="text-align: right; position: relative;">
                                     <span class="md-headline">{{t.description.title}}</span>
                                     <span class="md-subhead">{{t.price | currency : '$' : 2}}</span>
                                     <span class="md-subhead">{{t.days}} дней</span>
                                     <span class="md-subhead" ng-if="t.child + t.adult !== 0">{{t.child + t.adult}} человек</span>
+                                    <div style="position: absolute; width: 100%; bottom: 8px;" layout="row" ng-show="ActiveTour === null">
+                                        <md-button href="{{GetTourOrderLink(t.id)}}">
+                                            Оформить
+                                        </md-button>
+                                        <div flex></div>
+                                        <md-button class="md-raised" ng-click="SetActive(t);">
+                                            Детально
+                                        </md-button>
+                                    </div>
                                 </md-card-title-text>
 
                             </md-card-title>
                             <md-card-content flex style="padding-top: 16px;" ng-show="ActiveTour === t" ng-bind-html="t.description.description">
                             </md-card-content>
-                            <md-card-actions layout="row" layout-align="end center">
+                            <md-card-actions ng-show="ActiveTour !== null" layout="row" layout-align="end center">
                                 <md-button href="{{GetTourOrderLink(t.id)}}">К оформлению</md-button>
                                 <md-button ng-click="SetActive(t);" ng-show="ActiveTour !== t">Детально</md-button>
                                 <md-button ng-click="SetActive(null);" ng-show="ActiveTour === t">Hide</md-button>
@@ -110,7 +119,7 @@
 
                     <!-- Sidebar -->
 
-                    <md-card flex="35" show-gt-sm hide ng-class="{'none': ActiveTour !== null}">
+                    <md-card flex="25" show-gt-sm hide ng-class="{'none': ActiveTour !== null}">
 
                     </md-card>
                 </div>
@@ -124,11 +133,38 @@
     <!-- Hotels tab-->
 
     <md-tab label="Hotels">
-        <md-content class="md-padding">
-            <h1 class="md-display-2">Hotels</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-            <p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-            <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+        <md-content class="md-padding" ng-controller="HotelCtrl" ng-init="Init()" layout="row" layout-align="center start">
+            <div flex="75" flex-sm="85" flex-xs="100">
+                <h1 class="md-display-2">Our hotels</h1>
+                <div layout="row" layout-align="center start">
+                    <div flex="75" flex-sm="100" flex-xs="100">
+                        <md-card ng-repeat="h in Data">
+                            <md-card-title style="padding: 8px 16px 0px 0px; min-height: 250px;">
+                                <md-card-title-media flex="50" flex-sm="40" flex-xs="40">
+                                    <div class="md-media-lg card-media app-back-image" ng-style="{'background-image': 'url(' + h.images[0].url +')'}" style="width: 100%; height: 100%;"> 
+
+                                    </div>
+                                </md-card-title-media>
+                                <md-card-title-text style="padding-left: 8px; position: relative;">
+                                    <span class="md-headline">{{h.title}}</span>
+                                    <lt-hotel-rate rate="h.rate" size="24"></lt-hotel-rate>
+                                    <span class="md-subhead">{{IsAvaliable(h)}}</span>
+                                    <div style="position: absolute; bottom: 8px; width: 100%;" layout="row" layout-align="center center">
+                                        <md-button flex="50" flex-sm="60" flex-xs="70" class="md-button" ng-click="ShowDialog($event, h)">
+                                            More
+                                        </md-button>
+                                    </div>
+                                </md-card-title-text>
+
+                            </md-card-title>
+
+                        </md-card>
+                    </div>
+                    <div flex="25" hide-sm hide-xs>
+
+                    </div>
+                </div>
+            </div>
         </md-content>
     </md-tab>
 
@@ -154,6 +190,9 @@
         display: none;
     }
 
+    md-card{
+        margin: 16px 8px;
+    }
     .active-card
     {
         transition: all ease-out 400ms;
