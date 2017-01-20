@@ -1,0 +1,82 @@
+﻿<div layout="row" layout-align="center center" ng-controller="LoginCtrl" class="app-fullheight--64">
+    <md-card class="md-padding" flex="30" flex-sm="50" flex-xs="90">
+        <md-input-container flex-gt-xs>
+            <label>Email</label>
+            <input ng-model="user.email">
+        </md-input-container>
+        <md-input-container flex-gt-xs>
+            <label>Password</label>
+            <input ng-model="user.password" type="password">
+        </md-input-container>
+        <md-checkbox ng-model="user.rememberMe" aria-label="Remember me">
+            Запомнить меня
+        </md-checkbox>
+        <div layout="row">
+            <md-button flex="50" ng-disabled="user.waiting || !user.ready" ng-click="Send()">
+                Login
+            </md-button>
+        </div>
+    </md-card>
+</div>
+
+@section Scripts{
+    
+<script>
+
+    angular.module("App")
+        .controller("LoginCtrl", function ($scope, $http, $mdDialog, $window) {
+            $scope.user = {
+                email: "",
+                password: "",
+                rememberMe: true,
+
+                waiting: false,
+                ready: function () {
+                    var u = $scope.user;
+                    if (u.email !== '' && u.password !== '')
+                        return true;
+                    return false;
+                }
+            };
+
+            $scope.Send = function () {
+                if (!$scope.user.ready)
+                    return;
+
+                $scope.user.waiting = true;
+
+                var data = {
+                    email: $scope.user.email,
+                    password: $scope.user.password,
+                    rememberMe: $scope.user.rememberMe
+                };
+
+                $http.post('/api/login', data)
+                    .success(function (r) {
+                        if (r === 'success')
+                        {
+                            $window.location.href = '/dashboard/index';
+                        }
+                        else if (r === 'fail')
+                        {
+                            alert('Bad email or password');
+                        }
+                        else
+                            alert(r);
+
+                        $scope.user.password = "";
+                        $scope.user.waiting = false;
+                    })
+                    .error(function (r) {
+                        $scope.user.waiting = false;
+                        $scope.user.password = "";
+
+                        alert('Some server error');
+                    });
+            }
+            
+        })
+
+</script>
+    
+}

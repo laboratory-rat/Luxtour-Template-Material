@@ -12,6 +12,15 @@ md-dialog.full-window {
     border-radius: 0;
 }
 
+.app-white-input md-input-container.md-input-has-value label {
+    color: rgba(255,255,255,0.87);
+}
+
+.app-white-input input {
+    background-color: #fff !important;
+    border-radius: 2px;
+}
+
 .app-footer
 {
     min-height: 88px;
@@ -47,6 +56,11 @@ md-tabs .md-tab {
 .app-fullheight--110
 {
     height: Calc(100vh - 110px);
+}
+
+.app-fullheight--64
+{
+    height: Calc(100vh - 64px);
 }
 
 .app-fullheight{
@@ -138,11 +152,13 @@ lt-tour-slider > .lt-container > .lt-element
     list-style: none;
 }
 
-.lt-element md-card-content {
-    /*
-    overflow-x: scroll;
-    height: 200px;
-        */
+/*#region badge */
+
+md-badge {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    color: #F44336;
 }
 
 /*#endregion */

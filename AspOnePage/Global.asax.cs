@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿using NLog;
+using System;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -15,6 +17,17 @@ namespace AspOnePage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+
+            Logger l = LogManager.GetCurrentClassLogger();
+            l.Error(exception);
+
+            Server.ClearError();
+            Response.Redirect("/");
         }
     }
 }

@@ -5,10 +5,70 @@
 
     angular
         .module('App')
-        .controller('HomeCtrl', function ($scope, $ltBestTour) {
-            $ltBestTour().success(function (r) {
-                console.log(r);
-            });
+        .controller('HomeCtrl', function ($scope, $ltBestTour, $http) {
+
+            /* Cities */
+            $scope.AvaliableCities = [];
+            $scope.LoadCities = function () {
+                $http.get('/api/cities')
+                    .then(function (r) {
+                        $scope.AvaliableCities = r.data;
+                    });
+            };
+            $scope.newCity = function (text) {
+                var city = {
+                    title: text,
+                    value: text.toLowerCase(),
+                    id: -1,
+                    language: 'ru',
+                }
+                $scope.AvaliableCities.push(city);
+
+                $scope.CitySelected = city;
+            };
+            $scope.ChangeCity = function (city) {
+                if (city === undefined || city === null)
+                {
+                    $scope.user.city = "";
+                }
+                else
+                {
+                    $scope.user.city = city.value;
+                }
+            };
+
+            /* User */
+            $scope.user = {
+                name: "",
+                city: "",
+                message: "",
+                email: '',
+                complited: false,
+                isReady: function () {
+                    var u = $scope.user;
+                    if (u.name !== "" && u.city !== "" && u.message !== "" &&u.email !== '')
+                        return true;
+                    return false;
+                },
+            };
+            $scope.SendMessage = function () {
+                if (!$scope.user.isReady)
+                    return;
+
+                $scope.user.complited = true;
+
+                //$http.post('/api/sendMessage', $scope.user)
+                //    .success(function (r) {
+                        
+                //    })
+                //    .error(function (r) {
+
+                //    });
+            };
+
+            /* Init methods */
+            $scope.LoadCities();
+
         })
         .controller('ToursCtrl', function ($scope, $ltBestTour, $tourOrder) {
             $scope.Tours = [];
@@ -68,11 +128,14 @@
 
             //Init
         })
-        .controller('HotelCtrl', function ($scope, $ltHotels, $mdDialog) {
+        .controller('HotelCtrl', function ($scope, $ltHotels, $mdDialog, $http) {
 
             $scope.Data = [];
             $scope.AllLoaded = false;
             $scope.ErrorLoading = false;
+
+
+
 
             $scope.IsAvaliable = function (h) {
                 if (h === undefined || h === null)
@@ -162,5 +225,42 @@
             $mdDialog.hide(answer);
         };
     };
+
+    angular.module('App')
+        .controller("FabCtrl", ['$scope', '$window', '$mdDialog', function ($scope, $window, $mdDialog) {
+        $scope.UpScrollVisible = false;
+        $scope.IsFabOpen = false;
+
+        $scope.OpenMessageDialog = function (ev) {
+            var confirm = $mdDialog.prompt()
+                .title('Оставте нам сообщение')
+                .textContent('Или коментарий')
+                .placeholder('Мне очень понравилось')
+                .ariaLabel('Comment')
+                .initialValue('')
+                .targetEvent(ev)
+                .ok('Ok')
+                .cancel('Не сейчас');
+
+            $mdDialog.show(confirm).then(function (result) {
+                //
+            }, function () {
+                //
+            });
+        };
+
+        angular.element($window).bind("scroll", function () {
+
+            var offset = this.pageYOffset;
+
+            if ((offset > 500 && !$scope.UpScrollVisible) || (offset <= 500 && $scope.UpScrollVisible)) {
+                $scope.UpScrollVisible = !$scope.UpScrollVisible;
+
+                $scope.IsFabOpen = false;
+            }
+
+            $scope.$apply();
+        })
+    }]);
 
 })();

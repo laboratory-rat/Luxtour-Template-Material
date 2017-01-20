@@ -42,6 +42,8 @@ namespace AspOnePage
                 "~/Scripts/angular-material/angular-material.js",
                 "~/Scripts/SmoothScroll.min.js",
                 "~/Scripts/jk-carousel.min.js",
+                "~/Scripts/Chart.min.js",
+                "~/Scripts/angular-chart.min.js",
                 "~/Scripts/ltConfig.js"
                 ));
 
@@ -56,6 +58,8 @@ namespace AspOnePage
                 "~/Scripts/angular-material/angular-material.min.js",
                 "~/Scripts/SmoothScroll.min.js",
                 "~/Scripts/jk-carousel.min.js",
+                "~/Scripts/Chart.min.js",
+                "~/Scripts/angular-chart.min.js",
                 "~/Scripts/ltConfig.js"
                 ));
 

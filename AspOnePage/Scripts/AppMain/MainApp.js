@@ -4,9 +4,10 @@
     angular
         .module('App',
         [
+            'ngRoute',
             'ngMaterial',
             'ltConfig',
-            'ngRoute',
+            'chart.js',
             'angularSmoothscroll',
             'jkAngularCarousel',
             'ngSanitize',
@@ -27,41 +28,7 @@
             }
         }])
 
-        .controller("FabCtrl", ['$scope', '$window', '$mdDialog', function ($scope, $window, $mdDialog) {
-            $scope.UpScrollVisible = false;
-            $scope.IsFabOpen = false;
 
-            $scope.OpenMessageDialog = function (ev) {
-                var confirm = $mdDialog.prompt()
-                    .title('Оставте нам сообщение')
-                    .textContent('Или коментарий')
-                    .placeholder('Мне очень понравилось')
-                    .ariaLabel('Comment')
-                    .initialValue('')
-                    .targetEvent(ev)
-                    .ok('Ok')
-                    .cancel('Не сейчас');
-
-                $mdDialog.show(confirm).then(function (result) {
-                    //
-                }, function () {
-                    //
-                });
-            };
-
-            angular.element($window).bind("scroll", function () {
-
-                var offset = this.pageYOffset;
-
-                if ((offset > 500 && !$scope.UpScrollVisible) || (offset <= 500 && $scope.UpScrollVisible)) {
-                    $scope.UpScrollVisible = !$scope.UpScrollVisible;
-
-                    $scope.IsFabOpen = false;
-                }
-
-                $scope.$apply();
-            })
-        }]);
 
         
 })();

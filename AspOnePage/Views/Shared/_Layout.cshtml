@@ -28,6 +28,17 @@
                 
                 <!-- Main menu -->
 
+                <!-- Icons if authorized -->
+
+                <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-href="#tel"  >
+                    <md-icon class="material-icons">phone</md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="Favorite" ng-href="#mail">
+                    <md-icon class="material-icons">mail</md-icon>
+                </md-button>
+
+                <!-- End Icons -->
+
                 <md-menu>
                     <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="OpenMenu($mdOpenMenu, $event)">
                         <md-icon aria-label="menu icon" class="material-icons">menu</md-icon>
@@ -39,11 +50,24 @@
                                 To Luxtour.Online
                             </md-button>
                         </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-disabled="true">
-                                Clear
-                            </md-button>
-                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <md-menu-item>
+                                <md-button ng-href="/dashboard/login">
+                                    Log out
+                                </md-button>
+                            </md-menu-item>
+                        }
+                        else
+                        {
+                            <md-menu-item>
+                                <md-button ng-href="/dashboard/login">
+                                    log in
+                                </md-button>
+                            </md-menu-item>
+                        }
+
                         <md-menu-divider></md-menu-divider>
                         <md-menu-item>
                             <md-button ng-disabled="true">
@@ -80,33 +104,7 @@
         </footer>
     </div>
 
-    <!-- Fab -->
-    <div ng-controller="FabCtrl">
 
-        <md-button ng-show="UpScrollVisible" smooth-scroll target="tool-bar" ng-click="ScrollUp()" class="md-fab app-fab-main md-whiteframe-8dp app-fade" aria-label="Up button">
-            <md-icon class="material-icons app-white-main">keyboard_arrow_up</md-icon>
-        </md-button>
-
-        <md-fab-speed-dial ng-show="!UpScrollVisible" md-open="IsFabOpen" md-direction="up" class="md-fling app-fab-main app-fade app-fab-rotation">
-            <md-fab-trigger class="">
-                <md-button aria-label="menu" class="md-fab md-whiteframe-8dp ">
-                    <md-icon class="material-icons app-anim">add</md-icon>
-                </md-button>
-            </md-fab-trigger>
-
-            <md-fab-actions>
-                <md-button aria-label="Tel" class="md-fab md-raised md-mini">
-                    <md-icon aria-label="Tel" class="material-icons">phone</md-icon>
-                </md-button>
-                <md-button aria-label="Message" class="md-fab md-raised md-mini" ng-click="OpenMessageDialog($event)">
-                    <md-icon aria-label="Message" class="material-icons">message</md-icon>
-                </md-button>
-                <md-button aria-label="Mail" class="md-fab md-raised md-mini">
-                    <md-icon aria-label="Mail" class="material-icons">mail</md-icon>
-                </md-button>
-            </md-fab-actions>
-        </md-fab-speed-dial>
-    </div>
 
     <!-- End of tab -->
 
