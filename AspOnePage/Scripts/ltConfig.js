@@ -6,12 +6,17 @@
     angular.module('ltConfig', [
         'ngMaterial'
     ])
-        .config(function ($mdThemingProvider) {
+        .config(function ($mdThemingProvider, $mdDateLocaleProvider) {
+
+            // Colors
             $mdThemingProvider.theme('default')
                 .primaryPalette('indigo')
                 .accentPalette('light-blue');
-        })
 
+            //Date
+
+        })
+            
         // Factories //
 
         .factory("$ltBestTour", function ($http) {

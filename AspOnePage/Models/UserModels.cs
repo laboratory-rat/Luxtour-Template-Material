@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,7 @@ namespace AspOnePage.Models
         public string Id { get; set; } = "";
         public string ShortId => Id == "" ? "" : Id.Substring(0, 10);
         public bool Lockout { get; set; }
+        public DateTime Birthday { get; set; } = DateTime.UtcNow;
         public DateTime? LockoutEndDate { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
@@ -59,4 +61,29 @@ namespace AspOnePage.Models
             Pagination = new Pagination(total, List.Count, page);
         }
     }
+
+    public class UserRegistration : UserShort
+    {
+        [Required]
+        public bool SendEmail { get; set; } = false;
+        [Required]
+        public bool GeneratePassword { get; set; } = false;
+        [Required]
+        public bool IsAgent { get; set; } = false;
+        [Required]
+        public bool IsManager { get; set; } = false;
+        [Required]
+        public bool IsAdministrator { get; set; } = false;
+
+        [Required]
+        public string Password { get; set; }
+        [Required]
+        public string Confirm { get; set; }
+
+        public UserRegistration()
+        {
+
+        }
+    }
+
 }

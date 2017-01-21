@@ -86,6 +86,11 @@ namespace AspOnePage
             }
             return manager;
         }
+
+        public async Task<ApplicationUser> CurrentUserAsync()
+        {
+            return await FindByIdAsync(HttpContext.Current.User.Identity.GetUserId());
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.  

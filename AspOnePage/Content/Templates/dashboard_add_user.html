@@ -1,0 +1,87 @@
+﻿<md-content flex>
+   <md-card>
+       <md-card-title>
+           <md-card-title-text>
+               <span class="md-headline">Add new user</span>
+           </md-card-title-text>
+       </md-card-title>
+       <md-card-content layout-gt-xs="row" layout-xs="column">
+           <div flex layout-padding>
+               <div flex layout-gt-sm="row" layout="column">
+                   <md-input-container flex>
+                       <label>First name</label>
+                       <input ng-model="data.firstName" type="text" required>
+                   </md-input-container>
+                   <md-input-container flex>
+                       <label>Second name</label>
+                       <input ng-model="data.secondName" type="text" required>
+                   </md-input-container>
+               </div>
+               <div layout="column">
+                   <md-input-container flex>
+                       <label>Email</label>
+                       <md-icon class="material-icons">mail</md-icon>
+                       <input ng-model="data.email" type="email" required>
+                   </md-input-container>
+               </div>
+               <div flex layout-gt-sm="row" layout="column">
+
+                   <md-input-container flex>
+                       <label>Tel number</label>
+                       <md-icon class="material-icons">phone</md-icon>
+                       <input ng-model="data.tel" type="tel" required>
+                   </md-input-container>
+                   <md-input-container>
+                       <label>Birthday</label>
+                       <md-datepicker ng-model="data.birthday" required></md-datepicker>
+                   </md-input-container>
+               </div>
+               <div flex layout="column">
+                   <md-input-container>
+                       <label>Password</label>
+                       <input ng-model="data.password" ng-disabled="data.generatePassword" type="password" required>
+                   </md-input-container>
+                   <md-input-container>
+                       <label>Confirm password</label>
+                       <input ng-model="data.confirm" ng-disabled="data.generatePassword" type="password" required>
+                   </md-input-container>
+               </div>
+           </div>
+           <div flex layout-padding>
+               <md-list>
+                   <md-subheader class="md-no-sticky">Settings</md-subheader>
+                   <md-list-item>
+                       <p>Отправить email после регистрации</p>
+                       <md-checkbox class="md-secondary" ng-model="data.sendEmail"></md-checkbox>
+                   </md-list-item>
+                   <md-list-item>
+                       <p>Сгенерировать пароль</p>
+                       <md-checkbox class="md-secondary" ng-model="data.generatePassword" ng-disabled="data.sendEmail === false"></md-checkbox>
+                   </md-list-item>
+                   <md-divider></md-divider>
+                   <md-list-item>
+                       <p>Права агента</p>
+                       <md-checkbox class="md-secondary" ng-model="data.isAgent"></md-checkbox>
+                   </md-list-item>
+                   <md-list-item>
+                       <p>Права менеджера</p>
+                       <md-checkbox class="md-secondary" ng-model="data.isManager"></md-checkbox>
+                   </md-list-item>
+                   <md-list-item>
+                       <p>Права аминистратора</p>
+                       <md-checkbox class="md-secondary" ng-model="data.isAdministrator"></md-checkbox>
+                   </md-list-item>
+               </md-list>
+               {{data}}<br>
+               <div flex layout="row" layout-align="center start">
+                   <md-button flex="50" ng-disabled="!data.ready()" ng-click="Push()">Save</md-button>
+               </div>
+           </div>
+       </md-card-content>
+   </md-card>
+</md-content>
+<div class="app-fab-main">
+    <md-button aria-label="menu" class="md-fab md-warn" href="#/users">
+        <md-icon class="material-icons">arrow_left</md-icon>
+    </md-button>
+</div>

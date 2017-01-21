@@ -295,6 +295,7 @@
     <Content Include="Content\material-fonts.css" />
     <Content Include="Content\material-icons.css" />
     <Content Include="Content\Templates\dashboard_stats.html" />
+    <Content Include="Content\Templates\dashboard_add_user.html" />
     <Content Include="Content\Templates\dashboard_users.html" />
     <Content Include="Content\Templates\dashboard_settings.html" />
     <Content Include="Content\Templates\dashboard_main.html" />

@@ -1,3 +1,56 @@
-﻿<div>
-    Users page
+﻿<md-content flex layout="row" layout-align="start start">
+    <md-list flex="60">
+        <md-subheader class="md-no-sticky">Users list</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="user in data | filter : search" ng-click="null">
+            <md-icon class="material-icons md-avatar-icon">person</md-icon>
+            <div class="md-list-item-text" layout="column">
+                <h3>{{user.firstName}} {{user.secondName}}</h3>
+                <h4>{{user.tel}}</h4>
+                <p>{{user.email}}</p>
+            </div>
+            <md-button class="md-secondary md-icon-button">
+                <md-icon class="material-icons">phone</md-icon>
+            </md-button>
+            <md-button class="md-secondary md-icon-button">
+                <md-icon class="material-icons">mail</md-icon>
+            </md-button>
+            <md-button class="md-secondary md-icon-button">
+                <md-icon class="material-icons">build</md-icon>
+            </md-button>
+        </md-list-item>
+    </md-list>
+    <div flex layout="column" layout-padding>
+        <div layout-gt-md="row" layout="column">
+
+            <md-input-container>
+                <label>First Name</label>
+                <input ng-model="attr.firstName" type="text">
+            </md-input-container>
+            <md-input-container>
+                <label>Second Name</label>
+                <input ng-model="attr.secondName" type="text">
+            </md-input-container>
+        </div>
+        <div layout-gt-md="row" layout="column">
+            <md-input-container>
+                <label>Email</label>
+                <input ng-model="attr.email" type="text">
+            </md-input-container>
+            <md-input-container>
+                <label>Tel</label>
+                <input ng-model="attr.tel" type="text">
+            </md-input-container>
+        </div>
+        <div layout="row" layout-align="center">
+            <md-button class="" flex-gt-md="50" flex="70" ng-click="attr.clear()">Clear</md-button>
+        </div>
+
+    </div>
+</md-content>
+<div class="app-fab-main">
+
+    <md-button aria-label="menu" class="md-fab md-warn" href="#/users/add">
+        <md-icon class="material-icons">add</md-icon>
+    </md-button>
+
 </div>

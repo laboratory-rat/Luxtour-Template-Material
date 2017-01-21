@@ -22,6 +22,20 @@ namespace AspOnePage.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public ApplicationUser()
+        {
+
+        }
+
+        public ApplicationUser(UserRegistration model)
+        {
+            FirstName = model.FirstName;
+            SecondName = model.SecondName;
+            Email = UserName = model.Email;
+            PhoneNumber = model.Tel;
+            Birthday = model.Birthday;
+        }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
